@@ -1,19 +1,18 @@
-var HelloMessage = React.createClass({
-  getInitialState: function() {
-    return {
-      message: "Hello World"
-    }
-  },
-  render: function() {
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+class HelloMessage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: 'David' };
+  }
+  render() {
     return (
       <div>
-        {this.state.message}
+        Hello {this.state.name}
       </div>
     );
   }
-});
+}
 
-ReactDOM.render(
-  <HelloMessage />, 
-  document.body
-);
+ReactDOM.render(<HelloMessage />, document.body);

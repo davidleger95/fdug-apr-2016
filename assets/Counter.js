@@ -1,25 +1,26 @@
-import React from "react";
+import React, { Component } from 'react';
 
-var Counter = React.createClass({
-  getInitialState: function() {
-    return {
-      count: 0
-    };
-  },
-  increment: function() {
+class Counter extends Component {
+  state = {
+    count: 0
+  }
+
+  increment = () => {
     this.setState({
       count: this.state.count + 1
-    });
-  },
-  render: function() {
+    })
+  }
+
+  render() {
     return (
       <div>
         <h1>
-          {this.state.count} <button onClick={this.increment}>+</button>
+          {this.state.count}
+          <button onClick={this.increment}>+</button>
         </h1>
       </div>
     );
   }
-});
+}
 
 export default Counter;

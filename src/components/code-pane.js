@@ -46,5 +46,6 @@ CodePane.propTypes = {
 
 CodePane.defaultProps = {
   lang: "markup",
-  source: ""
+  source: "",
+  className: "code-block"
 };

@@ -7,6 +7,8 @@ import {
 } from "../src";
 
 import Counter from "../assets/Counter";
+import Input from "../assets/Input";
+import LoadingExample from "../assets/LoadingExample";
 import TickTock from "../assets/TickTock";
 
 import preloader from "../src/utils/preloader";
@@ -69,26 +71,6 @@ export default class Presentation extends React.Component {
               React.JS
             </Heading>
           </Slide>
-          <Slide transition={["slide"]} bgColor="black" notes={<ul>
-              <li>cvent</li>
-              <li>work on React.js apps everyday</li>
-              <li>talk about UI dev experience and how React re-energized</li>
-            </ul>}>
-            <Heading size={2} caps textColor="primary" textFont="primary">
-              About Me
-            </Heading>
-            <Image src={images.me.replace("/", "")} margin="0px auto 40px" height="293px"/>
-          </Slide>
-          <Slide transition={["slide"]} bgImage={images.reactionBG.replace("/", "")} bgDarken={0.75} notes={<ul>
-              <li>library for creating user interfaces</li>
-              <li>solves complex UI rendering</li>
-              <li>render ui and respond to events</li>
-            </ul>}>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              What is React?
-            </Heading>
-            <Image src={images.reactLogo.replace("/", "")} margin="0px auto 40px" height="293px"/>            
-          </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="darkgray">
             <Heading caps fit margin="0 0 70px 0">Is anyone actually using React?</Heading>
             <Layout>
@@ -110,10 +92,13 @@ export default class Presentation extends React.Component {
               </Fill>
             </Layout>
           </Slide>
-          <Slide transition={["zoom", "spin"]} bgColor="primary" notes={<ul>
-              <li>only responsible for displaying UI</li>
-            </ul>}>
-
+          <Slide transition={["slide"]} bgImage={images.reactionBG.replace("/", "")} bgDarken={0.75}>
+            <Heading size={2} caps fit textColor="primary" textFont="primary">
+              What is React?
+            </Heading>
+            <Image src={images.reactLogo.replace("/", "")} margin="0px auto 40px" height="293px"/>
+          </Slide>
+          <Slide transition={["zoom", "spin"]} bgColor="primary">
             <Heading caps fit>React is <b>not</b> MVC</Heading>
             <Layout>
               <Fill>
@@ -180,24 +165,10 @@ export default class Presentation extends React.Component {
               textSize="18px"
             />
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
-              <ul>
-                <li>passed in from parent</li>
-                <li>this.props read-only</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
             <Heading caps>Props</Heading>
-            <Image src={images.madprops.replace("/", "")} margin="10px" height="250px"/>
-            <Text textColor="white"><strong>Why was the prop mad?</strong></Text>
-            <Appear><Text textColor="white"><strong>Because it was touched</strong></Text></Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
-              <ul>
-                <li>can be defaulted & validated</li>
-                <li>getDefaultProps</li>
-                <li>propTypes</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
             <Heading caps>Props example</Heading>
             <CodePane
               lang="jsx"
@@ -206,28 +177,10 @@ export default class Presentation extends React.Component {
               textSize="18px"
             />
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="black">
-            <Image src={images.noProps.replace("/", "")} margin="10px" height="400px"/>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
-              <ul>
-                <li>created within a component</li>
-                <li>state should be considered private</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
             <Heading caps>State</Heading>
-            <Appear>
-              <Text textSize="50pt" bgColor="#800000" textColor="white" padding="50px">
-                For Internal Use Only
-              </Text>
-            </Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
-              <ul>
-                <li>getInitialState</li>
-                <li>this.state to read</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
             <Heading caps>State example</Heading>
             <CodePane
               lang="jsx"
@@ -236,11 +189,25 @@ export default class Presentation extends React.Component {
               textSize="18px"
             />
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
-              <ul>
-                <li>this.setState() to update</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
+            <Heading caps>Props & State Example</Heading>
+            <Layout>
+              <Fill>
+                <CodePane
+                  lang="jsx"
+                  source={require("raw!../assets/hello.state2.example")}
+                  margin="20px auto"
+                  textSize="18px"
+                />
+              </Fill>
+              <Appear>
+                <Fill>
+                  <Input />
+                </Fill>
+              </Appear>
+            </Layout>
+          </Slide>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
             <Heading caps>setState Example</Heading>
             <Layout>
               <Fill>
@@ -261,60 +228,57 @@ export default class Presentation extends React.Component {
           <Slide transition={["zoom", "fade"]} bgImage={images.virtualDOM.replace("/", "")} bgDarken={0.50}>
             <Heading caps fit>Virtual DOM</Heading>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="black" notes={
-              <ul>
-                <li>Re-render when data is dirty (ie: setState)</li>
-                <li>Does this using virtual DOM to generate a real DOM patch</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="black">
             <Heading caps fit>Virtual DOM example</Heading>
             <Image src={images.virtualDOMExample.replace("/", "")} margin="10px" height="400px"/>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="componentWillMount - before the initial render occurs, if you call setState within this method, render() will see the updated state and will be executed only once">
-            <Heading caps>Lifecycle (init)</Heading>
+            <Heading caps>Lifecycle (mounting)</Heading>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>getDefaultProps()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>constructor()</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.state</strong> or <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Used to set initial <strong>state</strong>.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>getInitialState()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentWillMount()</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.state</strong> or <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Probably shouldn't use it.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentWillMount()</strong></Text>
-                </Fill>
-              </Appear>
-              <Fill>
-                <Text textSize="20pt" margin={10} padding={20}></Text>
-              </Fill>
-            </Layout>
-            <Layout>
-              <Appear>
-                <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>render()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>render()</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Cannot use <strong>this.setState()</strong>
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
@@ -324,12 +288,19 @@ export default class Presentation extends React.Component {
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentDidMount()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentDidMount()</strong>
+                  </Text>
                 </Fill>
               </Appear>
-              <Fill>
-                <Text textSize="20pt" margin={10} padding={20}></Text>
-              </Fill>
+              <Appear>
+                <Fill>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Cannot use <strong>this.setState()</strong>.
+                    Useful for network calls, animations, element resizing...
+                  </Text>
+                </Fill>
+              </Appear>
             </Layout>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary">
@@ -337,48 +308,52 @@ export default class Presentation extends React.Component {
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentWillReceiveProps(props)</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentWillReceiveProps(nextProps)</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Skipped if no props are changed, can use <strong>this.setState</strong></Text>
-                </Fill>
-              </Appear>
-            </Layout>
-            <Layout>
-              <Appear>
-                <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>shouldComponentUpdate(props, state)</strong></Text>
-                </Fill>
-              </Appear>
-              <Appear>
-                <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Skipped if forced update, cannot use <strong>this.setState</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Skipped if no props are changed, can use <strong>this.setState</strong><br />
+                    Useful for making network calls based on new props.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentWillUpdate(props, state)</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>shouldComponentUpdate(nextProps, nextState)</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Skipped if forced update, cannot use <strong>this.setState</strong><br />
+                    Useful for preventing unnecessary re-renders.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>render()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentWillUpdate(props, state)</strong>
+                  </Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Cannot use <strong>this.setState()</strong><br />
+                    Useful almost only in conjunction with <strong>shouldComponentUpdate</strong>.
+                    Otherwise, use <strong>componentWillReceiveProps</strong>.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
@@ -388,95 +363,92 @@ export default class Presentation extends React.Component {
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentDidUpdate(props, state)</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentDidUpdate(prevProps, prevState)</strong>
+                  </Text>
                 </Fill>
               </Appear>
-              <Fill>
-                <Text textSize="20pt" margin={10} padding={20}></Text>
-              </Fill>
+              <Appear>
+                <Fill>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Updating component in response to prop or state changes.
+                  </Text>
+                </Fill>
+              </Appear>
             </Layout>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps margin="0 0 100px 0">Lifecycle (destroy)</Heading>
+            <Heading caps margin="0 0 100px 0">Lifecycle (unmount)</Heading>
             <Layout>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}><strong>componentWillUnmount()</strong></Text>
+                  <Text textSize="20pt" textColor="secondary" bgColor="white" margin={10} padding={20}>
+                    <strong>componentWillUnmount()</strong></Text>
                 </Fill>
               </Appear>
               <Appear>
                 <Fill>
-                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>Cannot use <strong>this.setState()</strong></Text>
+                  <Text textSize="20pt" textColor="white" margin={10} padding={20}>
+                    Cannot use <strong>this.setState()</strong><br />
+                    Useful for component cleanup: removing event listeners.
+                  </Text>
                 </Fill>
               </Appear>
             </Layout>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgImage={images.mixins.replace("/", "")} bgDarken={0.50}>
-            <Heading caps fit>Mixins</Heading>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgDarken={0.50}>
-            <Heading caps>Mixin Example</Heading>
+          <Slide transition={["zoom", "fade"]} bgColor="primary">
+            <Heading caps>Lifecycle Example</Heading>
             <Layout>
               <Fill>
                 <CodePane
                   lang="jsx"
-                  source={require("raw!../assets/mixin.example")}
-                  margin="20px 0 0 0"
-                  textSize="16px"
+                  source={require("raw!../assets/LoadingExample.example")}
+                  margin="20px auto"
+                  textSize="18px"
                 />
-                <Appear>
-                  <Fill>
-                    <TickTock />
-                  </Fill>
-                </Appear>
               </Fill>
+              <Appear>
+                <Fill>
+                  <LoadingExample />
+                </Fill>
+              </Appear>
+            </Layout>
+          </Slide>
+          <Slide transition={["zoom", "fade"]} bgDarken={0.25}>
+            <Heading caps>Beyond The Basics</Heading>
+          </Slide>
+          <Slide transition={["zoom", "fade"]} bgColor="black">
+            <Heading caps>Architectures</Heading>
+            <Layout>
               <Fill>
-                <CodePane
-                  lang="jsx"
-                  source={require("raw!../assets/mixin2.example")}
-                  margin="20px"
-                  textSize="16px"
-                />
+                <List size={4} textColor="white">
+                  <ListItem>Flux</ListItem>
+                  <ListItem>Redux</ListItem>
+                  <ListItem>MobX</ListItem>
+                  <ListItem>Nothing?</ListItem>
+                </List>
               </Fill>
             </Layout>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgImage={images.flux.replace("/", "")} bgDarken={0.25}>
-            <Heading caps margin="340px 0 0 0">awh... FLUX</Heading>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="black" notes={<ul>
-                <li>response to MVC</li>
-                <li>one way data flow</li>
-                <li>data architecture, not framework</li>
-              </ul>
-            }>
+          <Slide transition={["zoom", "fade"]} bgColor="black">
             <Heading caps>flux structure</Heading>
             <Image src={images.fluxReact.replace("/", "")} margin="0px auto 40px" height="  293px"/>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading fit>v15.0 vs v1.0</Heading>
-          </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="black">
-            <Heading caps fit>what's next?</Heading>
+            <Heading caps>Other Things...</Heading>
             <Layout>
               <Fill>
                 <List size={4} textColor="white">
-                  <ListItem>redux</ListItem>
-                  <ListItem>react router</ListItem>
-                  <ListItem>react motion</ListItem>
-                </List>
-              </Fill>
-              <Fill>
-                <List size={4} textColor="white">
-                  <ListItem>react native</ListItem>
-                  <ListItem>react intl</ListItem>
-                  <ListItem>relay / graphql</ListItem>
+                  <ListItem>Create React App</ListItem>
+                  <ListItem>PropTypes/Flow</ListItem>
+                  <ListItem>Jest</ListItem>
+                  <ListItem>React Native</ListItem>
                 </List>
               </Fill>
             </Layout>
           </Slide>
-
           <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Q&A</Heading>
+            <Heading caps>Questions</Heading>
           </Slide>
         </Deck>
       </Spectacle>

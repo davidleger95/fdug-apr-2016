@@ -3,6 +3,9 @@
           transform-origin: center center;
 }
 
+.spectacle-content {
+  overflow: auto;
+}
 /* Firefox */
 
 _:-moz-tree-row(hover), .spectacle-deck {
@@ -14,7 +17,8 @@ _:-moz-tree-row(hover), ul .appear {
 }
 
 html, body, #root {
-  height: 100%;
+  min-height: 100%;
+  overflow: auto;
   width: 100%;
   margin: 0;
   padding: 0;
